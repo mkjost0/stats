@@ -203,9 +203,6 @@ class SimpleExecContext : public ExecContext
             numIdleCycles = idleFraction * cpu->baseStats.numCycles;
             numBusyCycles = notIdleFraction * cpu->baseStats.numCycles;
 
-            numBranches
-                .prereq(numBranches);
-
             numPredictedBranches
                 .prereq(numPredictedBranches);
 
@@ -297,8 +294,6 @@ class SimpleExecContext : public ExecContext
         statistics::Scalar dcacheStallCycles;
 
         /// @{
-        /// Total number of branches fetched
-        statistics::Scalar numBranches;
         /// Number of branches predicted as taken
         statistics::Scalar numPredictedBranches;
         /// Number of misprediced branches
